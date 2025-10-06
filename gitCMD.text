@@ -1,0 +1,15 @@
+git init
+git config --global--list
+
+------
+muudatuste kinnitamine
+git status
+git add
+git commit an "tegevus mis on tehtud"
+
+git push
+
+---
+ssh võti loomiseks:
+id_rsa.pub on vaja lisada github'i nagu deploy key
+ssh-keygen -o-t rsa C "nikitosgoldboss()gmail.com"
