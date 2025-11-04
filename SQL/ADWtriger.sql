@@ -1,12 +1,8 @@
-IF OBJECT_ID('trg_TableChange', 'TR') IS NOT NULL
-    DROP TRIGGER trg_TableChange ON DATABASE;
-GO
-
-CREATE TRIGGER trg_TableChange
-ON DATABASE
-FOR CREATE_TABLE, ALTER_TABLE, DROP_TABLE
-AS
-BEGIN
-    PRINT 'Tabeli struktuur on muutunud.'
+CREATE TRIGGER trg_FactResellerSales_Insert 
+ON FactResellerSales 
+AFTER INSERT 
+AS 
+BEGIN 
+PRINT 'Uus müügikirje lisatud'; 
 END;
-GO
+
