@@ -1,15 +1,10 @@
-CREATE TRIGGER trg_FactResellerSales_Insert 
-ON FactResellerSales 
-AFTER INSERT 
-AS 
-BEGIN 
-PRINT 'Uus müügikirje lisatud'; 
+CREATE TRIGGER trg_InsertFactResellerSales
+ON FactResellerSales
+AFTER INSERT
+AS
+BEGIN
+    INSERT INTO SalesLog (ResellerKey, ProductKey, SalesAmount, InsertDate)
+    SELECT i.ResellerKey, i.ProductKey, i.SalesAmount, GETDATE()
+    FROM inserted i;
 END;
-
-CREATE TRIGGER trg_FactResellerSales_Update 
-ON FactResellerSales 
-AFTER 
-UPDATE 
-AS 
-BEGIN PRINT 'Müügiandmed uuendatud'; 
-END;
+GO
