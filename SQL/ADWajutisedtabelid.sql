@@ -54,3 +54,9 @@ SELECT ProductKey,
 FROM FactResellerSales 
 WHERE ProductKey IN (761, 762) 
 GROUP BY ProductKey;
+
+SELECT ProductKey,
+       SUM(SalesAmount) AS TotalSales 
+FROM FactResellerSales 
+GROUP BY ProductKey 
+ORDER BY TotalSales ASC;
