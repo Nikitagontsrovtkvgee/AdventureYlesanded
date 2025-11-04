@@ -24,3 +24,9 @@ SELECT ProductKey,
        COUNT(*) AS SalesCount 
 FROM FactResellerSales 
 GROUP BY ProductKey;
+
+SELECT ProductKey,
+       SUM(SalesAmount) AS TotalSales 
+FROM FactResellerSales 
+WHERE ProductKey IN (761, 762, 763) 
+GROUP BY ProductKey;
