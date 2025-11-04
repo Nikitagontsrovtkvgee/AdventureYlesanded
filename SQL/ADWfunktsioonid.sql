@@ -32,3 +32,9 @@ AS TotalSales
 FROM FactResellerSales 
 WHERE SalesAmount BETWEEN 200 AND 800 
 GROUP BY ProductKey;
+
+SELECT ProductKey,
+COUNT(*) AS SalesCount 
+FROM FactResellerSales 
+WHERE ProductKey IN (761, 762) 
+GROUP BY ProductKey;
