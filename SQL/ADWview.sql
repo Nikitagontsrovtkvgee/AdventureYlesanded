@@ -5,3 +5,5 @@ FROM FactResellerSales
 GROUP BY ResellerKey 
 ORDER BY TotalSales DESC;
 
+SELECT * FROM vw_TopResellers;
+
