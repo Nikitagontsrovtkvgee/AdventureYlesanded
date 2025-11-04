@@ -14,3 +14,8 @@ JOIN DimProductSubcategory sc ON p.ProductSubcategoryKey = sc.ProductSubcategory
 JOIN DimProductCategory pc ON sc.ProductCategoryKey = pc.ProductCategoryKey
 GROUP BY pc.ProductCategoryKey, pc.EnglishProductCategoryName
 ORDER BY TotalSales DESC;
+
+SELECT AVG(SalesAmount) AS AvgSales,
+       MIN(SalesAmount) AS MinSales,
+       MAX(SalesAmount) AS MaxSales 
+FROM FactResellerSales;
