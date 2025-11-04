@@ -16,3 +16,5 @@ JOIN DimProduct p ON f.ProductKey = p.ProductKey
 JOIN DimProductSubcategory sc ON p.ProductSubcategoryKey = sc.ProductSubcategoryKey
 JOIN DimProductCategory pc ON sc.ProductCategoryKey = pc.ProductCategoryKey
 GROUP BY pc.ProductCategoryKey, pc.EnglishProductCategoryName;
+
+SELECT * FROM vw_CategorySales;
