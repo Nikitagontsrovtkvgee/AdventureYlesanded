@@ -19,3 +19,13 @@ BEGIN
     JOIN deleted d ON i.CustomerKey = d.CustomerKey
     WHERE i.EmailAddress <> d.EmailAddress;
 END;
+
+CREATE TRIGGER trg_DeleteFactResellerSales
+ON FactResellerSales
+AFTER DELETE
+AS
+BEGIN
+    INSERT INTO FactResellerSalesArchive (ResellerKey, ProductKey, SalesAmount, DeletedDate)
+    SELECT d.ResellerKey, d.ProductKey, d.SalesAmount, GETDATE()
+    FROM deleted d;
+END;
