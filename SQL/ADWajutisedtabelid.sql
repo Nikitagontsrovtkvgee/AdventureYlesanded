@@ -60,3 +60,9 @@ SELECT ProductKey,
 FROM FactResellerSales 
 GROUP BY ProductKey 
 ORDER BY TotalSales ASC;
+
+SELECT ProductKey,
+       SUM(SalesAmount) AS TotalSales 
+FROM FactResellerSales 
+GROUP BY ProductKey 
+HAVING COUNT(*) > 10;
