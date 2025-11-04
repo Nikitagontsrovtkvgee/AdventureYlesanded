@@ -19,3 +19,9 @@ AS TotalSales
 FROM FactResellerSales 
 GROUP BY ProductKey HAVING SUM(SalesAmount) > 1000;
 
+SELECT ProductKey,
+SUM(SalesAmount) 
+AS TotalSales 
+FROM FactResellerSales 
+WHERE SalesAmount > 500 
+GROUP BY ProductKey;
