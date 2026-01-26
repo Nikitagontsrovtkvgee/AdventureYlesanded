@@ -1,3 +1,5 @@
+-- Trigger käivitub pärast uue kirje lisamist FactResellerSales tabelisse
+-- Salvestab lisatud andmed logitabelisse koos kuupäevaga
 CREATE TRIGGER trg_InsertFactResellerSales
 ON FactResellerSales
 AFTER INSERT
@@ -7,9 +9,9 @@ BEGIN
     SELECT i.ResellerKey, i.ProductKey, i.SalesAmount, GETDATE()
     FROM inserted i;
 END;
-/*Trigger käivitub pärast kirje lisamist tabelisse FactResellerSales, veerud (ResellerKey, ProductKey, SalesAmount) ja salvestab andmed tabelisse SalesLog koos praeguse kuupäevaga.*/
 
-
+-- Trigger käivitub pärast kliendi e-posti muutmist
+-- Salvestab vana ja uue e-posti aadressi logisse
 CREATE TRIGGER trg_UpdateCustomerEmail
 ON DimCustomer
 AFTER UPDATE
@@ -21,16 +23,16 @@ BEGIN
     JOIN deleted d ON i.CustomerKey = d.CustomerKey
     WHERE i.EmailAddress <> d.EmailAddress;
 END;
-/*Trigger käivitub pärast veeru Email muutmist tabelis DimCustomer ja salvestab vana ja uue e-posti aadressi tabelisse CustomerEmailLog koos muutmise kuupäevaga.*/
 
-
+-- Trigger käivitub pärast kirje kustutamist FactResellerSales tabelist
+-- Salvestab kustutatud andmed arhiivi
 CREATE TRIGGER trg_DeleteFactResellerSales
 ON FactResellerSales
 AFTER DELETE
 AS
 BEGIN
-    INSERT INTO FactResellerSalesArchive (ResellerKey, ProductKey, SalesAmount, DeletedDate)
+    INSERT INTO FactResellerSalesArchive 
+        (ResellerKey, ProductKey, SalesAmount, DeletedDate)
     SELECT d.ResellerKey, d.ProductKey, d.SalesAmount, GETDATE()
     FROM deleted d;
 END;
-/*Trigger käivitub pärast kirje eemaldamist tabelist FactResellerSales ja salvestab eemaldatud andmed teise tabelisse.*/
