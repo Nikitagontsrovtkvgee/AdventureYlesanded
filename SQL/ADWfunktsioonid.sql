@@ -1,29 +1,29 @@
--- Leian TOP 5 toodet suurima müügisummaga
+-- Leiame TOP 5 toodet suurima müügisummaga
 SELECT TOP 5 ProductKey, SUM(SalesAmount) AS TotalSales
 FROM FactResellerSales
 GROUP BY ProductKey
 ORDER BY TotalSales DESC;
 
--- Arvutan müügi keskmise, miinimumi ja maksimumi
+-- Arvutame müügi keskmise, miinimumi ja maksimumi
 SELECT AVG(SalesAmount) AS AvgSales,
        MIN(SalesAmount) AS MinSales,
        MAX(SalesAmount) AS MaxSales 
 FROM FactResellerSales;
 
--- Loendan, mitu korda iga toodet on müüdud
+-- Loendame, mitu korda iga toodet on müüdud
 SELECT ProductKey,
        COUNT(*) AS SalesCount 
 FROM FactResellerSales 
 GROUP BY ProductKey;
 
--- Arvutan müügi kindlate toodete jaoks
+-- Arvutame müügi kindlate toodete jaoks
 SELECT ProductKey,
        SUM(SalesAmount) AS TotalSales 
 FROM FactResellerSales 
 WHERE ProductKey IN (761, 762, 763) 
 GROUP BY ProductKey;
 
--- Kuvan tooted, mille kogumüük on suurem kui 1000
+-- Kuvame tooted, mille kogumüük on suurem kui 1000
 SELECT ProductKey,
        SUM(SalesAmount) AS TotalSales 
 FROM FactResellerSales 
@@ -37,28 +37,28 @@ FROM FactResellerSales
 WHERE SalesAmount > 500 
 GROUP BY ProductKey;
 
--- Arvutan müügi toodetele vahemikus 200 kuni 800
+-- Arvutame müügi toodetele vahemikus 200 kuni 800
 SELECT ProductKey,
        SUM(SalesAmount) AS TotalSales 
 FROM FactResellerSales 
 WHERE SalesAmount BETWEEN 200 AND 800 
 GROUP BY ProductKey;
 
--- Loendan müükide arvu kindlate toodete puhul
+-- Loendame müükide arvu kindlate toodete puhul
 SELECT ProductKey,
        COUNT(*) AS SalesCount 
 FROM FactResellerSales 
 WHERE ProductKey IN (761, 762) 
 GROUP BY ProductKey;
 
--- Kuvan toodete müügisummad kasvavas järjekorras
+-- Kuvame toodete müügisummad kasvavas järjekorras
 SELECT ProductKey,
        SUM(SalesAmount) AS TotalSales 
 FROM FactResellerSales 
 GROUP BY ProductKey 
 ORDER BY TotalSales ASC;
 
--- Kuvan tooted, millel on rohkem kui 10 müüki
+-- Kuvame tooted, millel on rohkem kui 10 müüki
 SELECT ProductKey,
        SUM(SalesAmount) AS TotalSales 
 FROM FactResellerSales 
