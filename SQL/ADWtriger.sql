@@ -11,7 +11,7 @@ BEGIN
 END;
 
 -- Trigger käivitub pärast kliendi e-posti muutmist
--- Salvestab vana ja uue e-posti aadressi logisse
+-- Salvestab vana ja uue eposti aadressi logisse
 CREATE TRIGGER trg_UpdateCustomerEmail
 ON DimCustomer
 AFTER UPDATE
