@@ -1,4 +1,4 @@
--- Loome vaate, mis näitab TOP 5 edasimüüjat müügi alusel
+-- Loome vaate, mis näitab top 5 edasimüüjat müügi alusel
 CREATE VIEW vw_TopResellers 
 AS 
 SELECT TOP 5 ResellerKey, 
